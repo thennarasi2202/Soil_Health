@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Reset default margins */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Background image */
+    .background {
+      background-image: url('https://www.elephango.com/images/RCLG/nutrients-in-soil-11587-full.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+
+    /* Main content styling */
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    #intro p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 10px auto;
+    }
+
+    img {
+      display: block;
+      margin: 30px auto;
+      width: 500px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Blurred Background -->
+  <div class="background"></div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Soil Health Assessment</h1>
+
+    <div id="intro">
+      <p>Understanding soil health is essential for sustainable agriculture and environmental protection.</p>
+      <p>This tool allows users to assess the condition of their soil based on key indicators such as nutrient content, moisture, pH levels, and other critical factors.</p>
+      <p>By analyzing your input, the model predicts overall soil health and offers insights that can guide effective soil management and crop planning.</p>
+      <p>Whether you're a farmer, researcher, or enthusiast, this platform helps you make informed decisions to enhance productivity and maintain ecological balance.</p>
+    </div>
+
+    <img src="https://croptivate.com/wp-content/uploads/2020/07/soil-nutrients.jpg" alt="Soil Nutrients">
+
+    <form action="/predict">
+      <button type="submit">Go to Prediction</button>
+    </form>
+  </div>
+
+</body>
+</html>

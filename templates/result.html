@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Health Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://s15485.pcdn.co/wp-content/uploads/2023/05/loamy-soil-with-a-rich-dark-color.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .result-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8); 
+        }
+
+        h1 {
+            color: #388E3C;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="result-container">
+        <h1>Soil Health Prediction</h1>
+    
+        {% if prediction == "High" %}
+            <div class="image-container">
+                <img src="https://images.fineartamerica.com/images-medium-large-5/1-crops-grow-on-fertile-farm-land-pgiam.jpg" alt="High Fertility Image">
+            </div>
+            <p><strong>Prediction: </strong>High Fertility</p>
+            <p><strong>Message: </strong>Your soil has high fertility and is well-suited for productive agriculture. Continue monitoring and maintaining your soil health for optimal results.</p>
+    
+        {% elif prediction == "Moderate" %}
+            <div class="image-container">
+                <img src="https://eos.com/wp-content/uploads/2021/03/soil-fertility-loss.jpg" alt="Moderate Fertility Image">
+            </div>
+            <p><strong>Prediction: </strong>Moderate Fertility</p>
+            <p><strong>Message: </strong>Your soil has moderate fertility. It is advisable to optimize your soil with proper nutrient management and other practices to improve crop productivity.</p>
+        {% else %}
+            <p><strong>Prediction: </strong>Unknown</p>
+            <p><strong>Message: </strong>The prediction result could not be determined. Please check your inputs and try again.</p>
+        {% endif %}
+    
+        <a href="/predict" class="back-button">Back to Prediction Page</a>
+    </div>
+    
+    
+
+</body>
+</html>

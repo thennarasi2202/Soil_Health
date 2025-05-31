@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soil Health Prediction</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f4f4f4;
+        position: relative;
+        min-height: 100vh;
+        /* Remove overflow: hidden so page can scroll */
+      }
+      
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-image: url('https://cdn.mos.cms.futurecdn.net/wZTmnBJxGB78cYUYgjRmTK.jpg'); 
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px);
+        z-index: -1;
+        /* Do not interfere with page scroll */
+        pointer-events: none;
+      }
+      
+  
+    .tab-container, .tab-content, form, h2 {
+      position: relative;
+      z-index: 1;
+    }
+  
+    /* The rest of your existing styles stay the same below */
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  
+    .tab-button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+    }
+  
+    .tab-button.active {
+      background-color: #388E3C;
+    }
+  
+    .tab-content {
+        display: none;
+        background-color: rgba(255, 255, 255, 0.2); /* transparent white */
+        padding: 20px;
+        border-radius: 0 5px 5px 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        max-width: 600px;
+        margin: auto;
+        backdrop-filter: blur(10px); /* adds blur effect to what's behind it */
+        -webkit-backdrop-filter: blur(10px); /* for Safari */
+      }
+      
+      
+  
+    .tab-content.active {
+      display: block;
+    }
+  
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+  
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+  
+    button[type="submit"] {
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+  
+</head>
+<body>
+
+<h2 style="text-align: center;">Upload Soil Data for Prediction</h2>
+
+<div class="tab-container">
+  <button class="tab-button active" onclick="showTab(0)">Basic</button>
+  <button class="tab-button" onclick="showTab(1)">Soil Ratios</button>
+  <button class="tab-button" onclick="showTab(2)">Photoperiod & pH</button>
+</div>
+
+<form method="POST", action="{{ url_for('predict') }}">
+  <!-- Tab 1: Basic Info -->
+  <div class="tab-content active">
+    <label>Temperature</label>
+    <input type="number" step="any" name="Temperature" required>
+
+    <label>Rainfall</label>
+    <input type="number" step="any" name="Rainfall" required>
+
+    <label>Rh</label>
+    <input type="number" step="any" name="Rh" required>
+
+    <label>pH</label>
+    <input type="number" step="any" name="pH" required>
+
+    <label>Light Hours</label>
+    <input type="number" step="any" name="Light_Hours" required>
+
+    <label>Light Intensity</label>
+    <input type="number" step="any" name="Light_Intensity" required>
+
+    <label>Nitrogen</label>
+    <input type="number" step="any" name="Nitrogen" required>
+
+    <label>Phosphorus</label>
+    <input type="number" step="any" name="Phosphorus" required>
+
+    <label>Potassium</label>
+    <input type="number" step="any" name="Potassium" required>
+
+    <label>Yield</label>
+    <input type="number" step="any" name="Yield" required>
+  </div>
+
+  <!-- Tab 2: Soil Ratios -->
+  <div class="tab-content">
+    <label>K_Ratio</label>
+    <input type="number" step="any" name="K_Ratio" required>
+
+    <label>N Ratio</label>
+    <input type="number" step="any" name="N_Ratio" required>
+
+    <label>P Ratio</label>
+    <input type="number" step="any" name="P_Ratio" required>
+  </div>
+
+  <!-- Tab 3: Photoperiod -->
+  <div class="tab-content">
+    <label>Photoperiod</label>
+    <select name="Photoperiod" required>
+      <option value="Day Neutral">Day Neutral</option>
+      <option value="Short Day Period">Short Day </option>
+      <option value="Long Day Period">Long Day</option>
+    </select>
+
+    <label>Category pH</label>
+    <select name="Category_pH" required>
+      <option value="low_acidic">Acidic</option>
+      <option value="neutral">Neutral</option>
+      <option value="low_alkaline">Alkaline</option>
+    </select>
+  </div>
+
+  <div style="text-align:center;">
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<script>
+  function showTab(index) {
+    const tabs = document.querySelectorAll(".tab-content");
+    const buttons = document.querySelectorAll(".tab-button");
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle("active", i === index);
+      buttons[i].classList.toggle("active", i === index);
+    });
+  }
+</script>
+
+</body>
+</html>
